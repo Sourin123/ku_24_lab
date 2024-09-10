@@ -21,24 +21,36 @@ let verifyPass = (pass) => {
 };
 let button = document.getElementById("btnSubmit");
 button.addEventListener("click", () => {
-  let name = document.querySelector("#name").value;
-  let email = document.querySelector("#email").value;
-  let phone = document.querySelector("#phone").value;
-  let pass = document.getElementById("pass").value;
-  if (name.length < 4 || !validateName()) {
-    alert("Invalid Name");
-  }
-  if (!validateEmail(email)) {
-    alert("Invalid email");
-  }
-  if (phone.length < 10) {
-    alert("Invalid Phone Number");
-  }
-  if (!verifyPass(pass)) {
-    alert("Invalid Password");
-  }
-    name = "";
-    email = "";
-    phone = "";
-    pass = "";
+  // let name = document.querySelector("#name").value;
+  // let email = document.querySelector("#email").value;
+  // let phone = document.querySelector("#phone").value;
+  // let pass = document.getElementById("pass").value;
+  // if (name.length < 4 || !validateName()) {
+  //   alert("Invalid Name");
+  // }
+  // if (!validateEmail(email)) {
+  //   alert("Invalid email");
+  // }
+  // if (phone.length < 10) {
+  //   alert("Invalid Phone Number");
+  // }
+  // if (!verifyPass(pass)) {
+  //   alert("Invalid Password");
+  // }
+  let newUser = {
+    name: "Alice",
+    email: "alice@example.com",
+    phone: "9876543210",
+    pass: "newpassword123"
+};
+
+  fetch("http://localhost/ku_24_lab_backend/Ass2_backend/get.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(newUser),
+  }).then(res=>res.json()).then(data=>{
+    console.log(data)
+  })
 });
